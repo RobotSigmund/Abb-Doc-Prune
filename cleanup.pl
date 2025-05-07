@@ -37,14 +37,14 @@ sub process_dir{
 		# Folder?
 		if (-d $dir . '/' . $de) {
 			
-			# English and swedish, we keep these
-			if ($de =~ /^(en|sv)$/) {
+			# English, we keep these
+			if ($de eq 'en') {
 				# Nop, we keep these
 				
 			} elsif ($de eq '_htmlresources') {
 				# Nop, keep these also
 				
-			} elsif ($de =~ /^(cz|da|de|es|fi|fr|hu|it|ja|ko|nl|pl|pt|ru|sl|sv|tr|zh)$/) {
+			} elsif ($de =~ /^(cz|da|de|es|fi|fr|hu|it|ja|ko|nl|pl|pt|ru|se|sl|sv|tr|zh)$/) {
 				# This is not relevant, so we delete it
 				print '  Deleting [' . $dir . '/' . $de . ']...';
 				rmtree($dir . '/' . $de);
@@ -84,7 +84,7 @@ sub patch_index {
 
 	# Try to remove irrelevant links
 	# <li class="list-group-item"><a target="_blank" class="icon_abb_16 icon-abb_right-arrow_16 release-link" href="Safety information/Safety information/ja/3HAC027098-001.pdf">ユーザーマニュアル- 非常時における安全確認について</a></li>
-	$file_content =~ s/<li class="[^<>"]*?"><a[^<>]*?href="[^<>"]*?\W(cz|da|de|es|fi|fr|hu|it|ja|ko|nl|pl|pt|ru|sl|sv|tr|zh)\W[^<>"]*?".*?><\/li>//g;
+	$file_content =~ s/<li class="[^<>"]*?"><a[^<>]*?href="[^<>"]*?\W(cz|da|de|es|fi|fr|hu|it|ja|ko|nl|pl|pt|ru|se|sl|sv|tr|zh)\W[^<>"]*?".*?><\/li>//g;
 
 	# Try to remove irrelevant language sections
 	# <div class="language"><a class="lang-link" data-toggle="collapse" aria-expanded="false" aria-controls="Gettingstarted-de" href="#Gettingstarted-de">deutsch</a></div>
